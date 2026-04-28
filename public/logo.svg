@@ -1,0 +1,16 @@
+<svg width="240" height="120" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Minimalist "vp" logo replica -->
+  <style>
+    .vp-text {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      font-weight: 400;
+      fill: #0F172A;
+    }
+  </style>
+  
+  <!-- "vp" - Slightly larger and centered -->
+  <text x="50%" y="45" text-anchor="middle" class="vp-text" style="font-size: 52px; letter-spacing: -2px;">vp</text>
+  
+  <!-- "virtualpersonal.ai" - below "vp" -->
+  <text x="50%" y="85" text-anchor="middle" class="vp-text" style="font-size: 24px; letter-spacing: -0.5px;">virtualpersonal.ai</text>
+</svg>
