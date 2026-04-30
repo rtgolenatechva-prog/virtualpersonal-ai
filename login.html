@@ -393,6 +393,7 @@
     setTimeout(() => {
       btn.textContent = '✓ Signed in! Redirecting…';
       btn.style.background = 'linear-gradient(135deg,#059669,#0d9488)';
+      setTimeout(() => { window.location.href = 'dashboard.html'; }, 700);
     }, 1400);
   });
 
