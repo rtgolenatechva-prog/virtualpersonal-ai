@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Billing — virtualpersonal.ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard-shared.css" />
+</head>
+<body>
+<div class="dash-layout">
+
+  <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="closeSidebar()"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><a href="index.html"><img src="/logo.svg" alt="virtualpersonal.ai" style="height:40px;width:auto;" /></a></div>
+    <div class="sidebar-section-label">Main</div>
+    <a href="dashboard.html" class="sidebar-link"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</a>
+    <a href="jobs.html" class="sidebar-link"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>My Jobs<span class="sidebar-badge">2</span></a>
+    <a href="my-vas.html" class="sidebar-link"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Active VAs</a>
+    <a href="matches.html" class="sidebar-link"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Matches<span class="sidebar-badge pulse">3</span></a>
+    <a href="interviews.html" class="sidebar-link"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Interviews</a>
+    <div class="sidebar-section-label">Account</div>
+    <a href="billing.html" class="sidebar-link active"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Billing</a>
+    <a href="settings.html" class="sidebar-link"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</a>
+    <div class="sidebar-footer">
+      <div class="user-avatar">AW</div>
+      <div style="flex:1;overflow:hidden;"><div style="font-size:0.8125rem;font-weight:600;color:var(--fg-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Alex Wilson</div><div style="font-size:0.75rem;color:var(--fg-muted);">Growth Plan</div></div>
+      <a href="login.html" title="Sign out" style="color:var(--fg-hint);transition:color 0.2s;" onmouseover="this.style.color='var(--error)'" onmouseout="this.style.color='var(--fg-hint)'"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></a>
+    </div>
+  </aside>
+
+  <div class="main-wrap">
+    <header class="top-bar">
+      <button onclick="openSidebar()" style="display:none;" id="mob-menu-btn" class="topbar-icon-btn"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div class="topbar-search"><span class="topbar-search-icon"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><input type="text" placeholder="Search billing…" onkeydown="if(event.key==='Enter')showToast('Search coming soon','info')" /></div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:10px;">
+        <div style="position:relative;"><button class="topbar-icon-btn" onclick="toggleDropdown('notif-dd')"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="notif-badge">3</span></button>
+          <div class="dropdown" id="notif-dd" style="min-width:280px;"><div style="padding:8px 11px 4px;font-size:0.8125rem;font-weight:700;color:var(--fg-primary);">Notifications</div><div class="dropdown-divider"></div><div class="dropdown-item" onclick="dismissNotif(this)"><div style="width:8px;height:8px;border-radius:50%;background:var(--emerald);flex-shrink:0;"></div><div><div style="color:var(--fg-primary);font-size:0.8125rem;">3 new matches for Senior EA</div><div style="font-size:0.75rem;color:var(--fg-muted);margin-top:2px;">2 min ago</div></div></div><div class="dropdown-item" onclick="dismissNotif(this)"><div style="width:8px;height:8px;border-radius:50%;background:var(--emerald);flex-shrink:0;"></div><div><div style="color:var(--fg-primary);font-size:0.8125rem;">Sarah Chen sent a weekly update</div><div style="font-size:0.75rem;color:var(--fg-muted);margin-top:2px;">1 hr ago</div></div></div><div class="dropdown-item" onclick="dismissNotif(this)"><div style="width:8px;height:8px;border-radius:50%;background:#6366F1;flex-shrink:0;"></div><div><div style="color:var(--fg-primary);font-size:0.8125rem;">Interview confirmed — Apr 18, 3 PM</div><div style="font-size:0.75rem;color:var(--fg-muted);margin-top:2px;">3 hrs ago</div></div></div></div></div>
+        <div style="position:relative;"><button onclick="toggleDropdown('avatar-dd')" style="display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:4px 6px;border-radius:10px;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='none'"><div class="user-avatar" style="width:32px;height:32px;font-size:0.7rem;">AW</div><span style="font-size:0.875rem;font-weight:600;color:var(--fg-primary);">Alex</span><svg width="13" height="13" fill="none" stroke="var(--fg-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown" id="avatar-dd"><a href="profile.html" class="dropdown-item"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</a><a href="settings.html" class="dropdown-item"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</a><div class="dropdown-divider"></div><a href="login.html" class="dropdown-item danger"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Sign Out</a></div></div>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <div style="margin-bottom:1.75rem;">
+        <h1 style="font-size:1.375rem;font-weight:800;color:var(--fg-primary);">Billing</h1>
+        <p style="color:var(--fg-muted);font-size:0.875rem;margin-top:4px;">Manage your plan, payment method, and invoices.</p>
+      </div>
+
+      <!-- Current Plan Card -->
+      <div class="glass-panel" style="margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <div>
+          <div style="font-size:0.75rem;font-weight:600;color:var(--emerald);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Current Plan</div>
+          <div style="font-size:1.25rem;font-weight:800;color:var(--fg-primary);">Growth</div>
+          <div style="font-size:0.875rem;color:var(--fg-muted);margin-top:4px;">$299 / month · Renews Jun 1, 2026</div>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <button class="btn-outline" onclick="showToast('Opening billing portal…','info')">Manage Plan</button>
+          <button class="btn-primary" onclick="showToast('Opening upgrade options…','info')">Upgrade</button>
+        </div>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="glass-panel" style="margin-bottom:1.25rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <div>
+            <div style="font-size:0.75rem;font-weight:600;color:var(--fg-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Payment Method</div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="background:rgba(255,255,255,0.08);border:1px solid var(--border-card);border-radius:8px;padding:6px 10px;font-size:0.8125rem;font-weight:700;color:var(--fg-primary);">VISA</div>
+              <div>
+                <div style="font-size:0.875rem;font-weight:600;color:var(--fg-primary);">Visa ending in 4242</div>
+                <div style="font-size:0.8125rem;color:var(--fg-muted);">Expires 09 / 2027</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-outline" onclick="showToast('Card update coming soon','info')">Update Card</button>
+        </div>
+      </div>
+
+      <!-- Invoices -->
+      <div class="glass-panel">
+        <div style="font-size:0.9375rem;font-weight:700;color:var(--fg-primary);margin-bottom:1rem;">Invoices</div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-card);">
+                <th style="text-align:left;padding:8px 12px 10px;color:var(--fg-muted);font-weight:600;font-size:0.8125rem;">Invoice</th>
+                <th style="text-align:left;padding:8px 12px 10px;color:var(--fg-muted);font-weight:600;font-size:0.8125rem;">Date</th>
+                <th style="text-align:left;padding:8px 12px 10px;color:var(--fg-muted);font-weight:600;font-size:0.8125rem;">Amount</th>
+                <th style="text-align:left;padding:8px 12px 10px;color:var(--fg-muted);font-weight:600;font-size:0.8125rem;">Status</th>
+                <th style="padding:8px 12px 10px;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border-card);">
+                <td style="padding:10px 12px;color:var(--fg-primary);font-weight:500;">VP-2026-004</td>
+                <td style="padding:10px 12px;color:var(--fg-muted);">May 1, 2026</td>
+                <td style="padding:10px 12px;color:var(--fg-primary);font-weight:600;">$299.00</td>
+                <td style="padding:10px 12px;"><span class="badge badge-active">Paid</span></td>
+                <td style="padding:10px 12px;text-align:right;"><button class="btn-ghost" style="padding:5px 10px;font-size:0.8rem;" onclick="downloadInvoice('VP-2026-004')">Download PDF</button></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border-card);">
+                <td style="padding:10px 12px;color:var(--fg-primary);font-weight:500;">VP-2026-003</td>
+                <td style="padding:10px 12px;color:var(--fg-muted);">Apr 1, 2026</td>
+                <td style="padding:10px 12px;color:var(--fg-primary);font-weight:600;">$299.00</td>
+                <td style="padding:10px 12px;"><span class="badge badge-active">Paid</span></td>
+                <td style="padding:10px 12px;text-align:right;"><button class="btn-ghost" style="padding:5px 10px;font-size:0.8rem;" onclick="downloadInvoice('VP-2026-003')">Download PDF</button></td>
+              </tr>
+              <tr>
+                <td style="padding:10px 12px;color:var(--fg-primary);font-weight:500;">VP-2026-002</td>
+                <td style="padding:10px 12px;color:var(--fg-muted);">Mar 1, 2026</td>
+                <td style="padding:10px 12px;color:var(--fg-primary);font-weight:600;">$299.00</td>
+                <td style="padding:10px 12px;"><span class="badge badge-active">Paid</span></td>
+                <td style="padding:10px 12px;text-align:right;"><button class="btn-ghost" style="padding:5px 10px;font-size:0.8rem;" onclick="downloadInvoice('VP-2026-002')">Download PDF</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<style>@media(max-width:1023px){#mob-menu-btn{display:flex!important;}}@media(max-width:640px){.topbar-search{display:none;}}</style>
+<script>
+  function showToast(msg,type='success'){const icons={success:'<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>',error:'<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',info:'<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'};const t=document.createElement('div');t.className=`toast ${type}`;t.innerHTML=`<span class="toast-icon">${icons[type]}</span><span>${msg}</span>`;document.getElementById('toast-container').appendChild(t);setTimeout(()=>{t.style.animation='toastOut 0.25s ease forwards';setTimeout(()=>t.remove(),260);},3200);}
+  function toggleDropdown(id){const dd=document.getElementById(id),isOpen=dd.classList.contains('open');document.querySelectorAll('.dropdown.open').forEach(d=>d.classList.remove('open'));if(!isOpen)dd.classList.add('open');}
+  document.addEventListener('click',e=>{if(!e.target.closest('[onclick*="toggleDropdown"]')&&!e.target.closest('.dropdown'))document.querySelectorAll('.dropdown.open').forEach(d=>d.classList.remove('open'));});
+  function dismissNotif(el){el.remove();const badge=document.querySelector('.notif-badge');if(badge){const n=parseInt(badge.textContent)-1;if(n<=0)badge.remove();else badge.textContent=n;}showToast('Notification dismissed','info');}
+  function openSidebar(){document.getElementById('sidebar').classList.add('mobile-open');document.getElementById('sidebar-backdrop').classList.add('open');document.body.style.overflow='hidden';}
+  function closeSidebar(){document.getElementById('sidebar').classList.remove('mobile-open');document.getElementById('sidebar-backdrop').classList.remove('open');document.body.style.overflow='';}
+  function downloadInvoice(id){
+    const csv = `Invoice,Date,Amount,Status\n${id},May 2026,$299.00,Paid`;
+    const blob = new Blob([csv], {type:'text/csv'});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `${id}.csv`; a.click();
+    showToast(`Downloading ${id}…`,'success');
+  }
+</script>
+</body>
+</html>

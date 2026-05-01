@@ -577,6 +577,13 @@ const ContactForm = {
         form.style.display = 'none';
         const success = document.getElementById('form-success');
         if (success) success.style.display = 'block';
+        // Re-enable after 6s so user can resubmit if needed
+        setTimeout(() => {
+          if (success) success.style.display = 'none';
+          form.style.display = '';
+          form.reset();
+          if (btn) { btn.textContent = 'Book My Free Strategy Call'; btn.disabled = false; }
+        }, 6000);
       }, 1200);
     });
   }

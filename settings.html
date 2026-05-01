@@ -97,7 +97,7 @@
             </select>
           </div>
           <div style="display:flex;justify-content:flex-end;">
-            <button class="btn-primary" onclick="showToast('Preferences saved ✓','success')">Save Preferences</button>
+            <button class="btn-primary" onclick="savePreferences()">Save Preferences</button>
           </div>
         </div>
 
@@ -112,7 +112,7 @@
                 </div>
                 <div><div style="font-size:0.875rem;font-weight:600;color:var(--fg-primary);">Google Calendar</div><div style="font-size:0.75rem;color:var(--emerald);">Connected</div></div>
               </div>
-              <button class="btn-ghost" style="font-size:0.8rem;color:var(--error);" onclick="showToast('Google Calendar disconnected','info')">Disconnect</button>
+              <button class="btn-ghost" style="font-size:0.8rem;color:var(--error);" id="gcal-btn" onclick="toggleCalendar(this)">Disconnect</button>
             </div>
             <div style="display:flex;align-items:center;justify-content:space-between;padding:0.875rem 1rem;border:1px solid var(--border-input);border-radius:12px;">
               <div style="display:flex;align-items:center;gap:12px;">
@@ -196,7 +196,7 @@
                 <svg width="20" height="20" fill="none" stroke="var(--fg-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                 <div><div style="font-size:0.875rem;font-weight:600;color:var(--fg-primary);">Mobile · Safari on iPhone</div><div style="font-size:0.75rem;color:var(--fg-muted);">2 days ago · New York, US</div></div>
               </div>
-              <button class="btn-ghost" style="font-size:0.8rem;color:var(--error);" onclick="showToast('Session revoked','success')">Revoke</button>
+              <button class="btn-ghost" style="font-size:0.8rem;color:var(--error);" onclick="revokeSession(this)">Revoke</button>
             </div>
           </div>
         </div>
@@ -246,8 +246,8 @@
               <div style="font-size:0.8125rem;color:var(--fg-muted);margin-top:4px;">Up to 5 active VAs · Unlimited job posts · Priority support</div>
             </div>
             <div style="display:flex;gap:10px;flex-wrap:wrap;">
-              <button class="btn-outline" onclick="showToast('Opening billing portal…','info')">Manage Plan</button>
-              <button class="btn-primary" onclick="showToast('Opening upgrade options…','info')">Upgrade</button>
+              <button class="btn-outline" onclick="window.location.href='billing.html'">Manage Plan</button>
+              <button class="btn-primary" onclick="openModal('upgrade-modal')">Upgrade</button>
             </div>
           </div>
           <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border-card);display:flex;gap:2rem;flex-wrap:wrap;">
@@ -261,7 +261,7 @@
         <div class="glass-panel" style="padding:1.75rem;margin-bottom:1.25rem;">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
             <h2 style="font-size:1rem;font-weight:700;color:var(--fg-primary);">Payment Method</h2>
-            <button class="btn-outline" style="font-size:0.8rem;padding:7px 14px;" onclick="showToast('Opening card update form…','info')">Update Card</button>
+            <button class="btn-outline" style="font-size:0.8rem;padding:7px 14px;" onclick="openModal('card-modal')">Update Card</button>
           </div>
           <div style="display:flex;align-items:center;gap:14px;padding:1rem 1.25rem;border:1px solid var(--border-input);border-radius:12px;max-width:380px;">
             <div style="width:44px;height:30px;background:linear-gradient(135deg,#1a56db,#1e3a8a);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:white;letter-spacing:0.05em;">VISA</div>
@@ -317,6 +317,56 @@
   </div>
 </div>
 
+<!-- Upgrade Plan Modal -->
+<div class="modal-overlay" id="upgrade-modal" onclick="if(event.target===this)closeModal('upgrade-modal')">
+  <div class="modal-box" style="max-width:460px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
+      <h2 style="font-size:1.125rem;font-weight:800;color:var(--fg-primary);">Upgrade Your Plan</h2>
+      <button onclick="closeModal('upgrade-modal')" class="btn-ghost" style="padding:6px;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:1.5rem;">
+      <div style="border:2px solid var(--emerald);border-radius:12px;padding:1rem 1.25rem;background:rgba(0,201,167,0.05);">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div><div style="font-weight:700;color:var(--fg-primary);">Enterprise</div><div style="font-size:0.8125rem;color:var(--fg-muted);margin-top:3px;">Unlimited VAs · Dedicated account manager</div></div>
+          <div style="font-size:1.1rem;font-weight:800;color:var(--emerald);">Custom</div>
+        </div>
+      </div>
+      <div style="border:1px solid var(--border-input);border-radius:12px;padding:1rem 1.25rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div><div style="font-weight:700;color:var(--fg-primary);">Scale</div><div style="font-size:0.8125rem;color:var(--fg-muted);margin-top:3px;">Up to 10 active VAs · Advanced analytics</div></div>
+          <div style="font-size:1.1rem;font-weight:800;color:var(--fg-primary);">$499<span style="font-size:0.75rem;font-weight:500;color:var(--fg-muted);">/mo</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn-outline" style="flex:1;" onclick="closeModal('upgrade-modal')">Cancel</button>
+      <button class="btn-primary" style="flex:1;" onclick="closeModal('upgrade-modal');showToast('Our team will reach out within 24 hours ✓','success')">Talk to Sales</button>
+    </div>
+  </div>
+</div>
+
+<!-- Update Card Modal -->
+<div class="modal-overlay" id="card-modal" onclick="if(event.target===this)closeModal('card-modal')">
+  <div class="modal-box" style="max-width:420px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+      <h2 style="font-size:1.125rem;font-weight:800;color:var(--fg-primary);">Update Payment Method</h2>
+      <button onclick="closeModal('card-modal')" class="btn-ghost" style="padding:6px;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem;">
+      <div><label class="form-label">Card Number</label><input class="form-input" type="text" placeholder="1234 5678 9012 3456" maxlength="19" oninput="this.value=this.value.replace(/[^0-9]/g,'').replace(/(.{4})/g,'$1 ').trim()" /></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div><label class="form-label">Expiry</label><input class="form-input" type="text" placeholder="MM / YY" maxlength="7" /></div>
+        <div><label class="form-label">CVC</label><input class="form-input" type="text" placeholder="123" maxlength="4" /></div>
+      </div>
+      <div><label class="form-label">Name on Card</label><input class="form-input" type="text" placeholder="Alex Wilson" /></div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn-outline" style="flex:1;" onclick="closeModal('card-modal')">Cancel</button>
+      <button class="btn-primary" style="flex:1;" onclick="closeModal('card-modal');showToast('Payment method updated ✓','success')">Save Card</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast-container"></div>
 
 <style>
@@ -331,6 +381,8 @@
   document.addEventListener('click',e=>{if(!e.target.closest('[onclick*="toggleDropdown"]')&&!e.target.closest('.dropdown')){document.querySelectorAll('.dropdown.open').forEach(d=>d.classList.remove('open'));}});
   function openSidebar(){document.getElementById('sidebar').classList.add('mobile-open');document.getElementById('sidebar-backdrop').classList.add('open');document.body.style.overflow='hidden';}
   function closeSidebar(){document.getElementById('sidebar').classList.remove('mobile-open');document.getElementById('sidebar-backdrop').classList.remove('open');document.body.style.overflow='';}
+  function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+  function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
 
   // ── Tabs ──
   function switchTab(name, btn) {
@@ -373,8 +425,70 @@
   }
 
   function signOutAll() {
+    // Remove all non-current-device session rows
+    document.querySelectorAll('#tab-security .glass-panel').forEach(panel => {
+      if (panel.querySelector('[style*="This device"], span')) {
+        panel.querySelectorAll('div[style*="border:1px solid var(--border-input)"]').forEach(row => {
+          row.style.transition = 'opacity 0.3s';
+          row.style.opacity = '0';
+          setTimeout(() => row.remove(), 310);
+        });
+      }
+    });
     showToast('All other sessions have been signed out', 'success');
   }
+
+  function revokeSession(btn) {
+    const row = btn.closest('div[style*="border:1px solid var(--border-input)"]');
+    if (row) { row.style.transition = 'opacity 0.3s'; row.style.opacity = '0'; setTimeout(() => row.remove(), 310); }
+    showToast('Session revoked', 'success');
+  }
+
+  // ── Account Preferences — persist in localStorage ──
+  function savePreferences() {
+    ['pref-lang','pref-tz','pref-date'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) localStorage.setItem(id, el.value);
+    });
+    showToast('Preferences saved ✓', 'success');
+  }
+  // Restore preferences on load
+  ['pref-lang','pref-tz','pref-date'].forEach(id => {
+    const saved = localStorage.getItem(id);
+    const el = document.getElementById(id);
+    if (saved && el) el.value = saved;
+  });
+
+  // ── Google Calendar toggle ──
+  function toggleCalendar(btn) {
+    const isConnected = btn.textContent.trim() === 'Disconnect';
+    const row = btn.closest('div[style*="border:1px solid"]');
+    const allDivs = row ? [...row.querySelectorAll('div')] : [];
+    const statusEl = allDivs.find(d => d.textContent === 'Connected' || d.textContent === 'Not connected');
+    if (isConnected) {
+      if (statusEl) { statusEl.textContent = 'Not connected'; statusEl.style.color = 'var(--fg-muted)'; }
+      btn.textContent = 'Connect';
+      btn.className = 'btn-outline';
+      btn.style.cssText = 'font-size:0.8rem;padding:7px 14px;';
+      localStorage.setItem('gcal-connected', 'false');
+      showToast('Google Calendar disconnected', 'info');
+    } else {
+      if (statusEl) { statusEl.textContent = 'Connected'; statusEl.style.color = 'var(--emerald)'; }
+      btn.textContent = 'Disconnect';
+      btn.className = 'btn-ghost';
+      btn.style.cssText = 'font-size:0.8rem;color:var(--error);';
+      localStorage.setItem('gcal-connected', 'true');
+      showToast('Google Calendar connected ✓', 'success');
+    }
+  }
+  // Restore calendar state
+  (function() {
+    const state = localStorage.getItem('gcal-connected');
+    if (state === 'false') {
+      const btn = document.getElementById('gcal-btn');
+      if (btn) toggleCalendar(btn);
+    }
+  })();
 
   // ── Notifications — persist in localStorage ──
   function saveNotif(key, val) {
@@ -393,7 +507,13 @@
 
   // ── Billing ──
   function downloadInvoice(id) {
-    showToast(`Downloading invoice #${id}…`, 'info');
+    const data = { 'VP-2025-041': { date:'Apr 1, 2026', amount:'$3,900.00' }, 'VP-2025-040': { date:'Mar 1, 2026', amount:'$3,600.00' }, 'VP-2025-039': { date:'Feb 1, 2026', amount:'$3,000.00' } };
+    const inv = data[id] || { date:'N/A', amount:'N/A' };
+    const text = `virtualpersonal.ai\nInvoice #${id}\nDate: ${inv.date}\nAmount: ${inv.amount}\nStatus: Paid\n\nThank you for your business.\nvirtualpersonal.ai`;
+    const blob = new Blob([text], { type:'text/plain' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `invoice-${id}.txt`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    showToast(`Downloading ${id}…`, 'success');
   }
 
   if (window.innerWidth < 1024) document.getElementById('mob-menu-btn').style.display = 'flex';

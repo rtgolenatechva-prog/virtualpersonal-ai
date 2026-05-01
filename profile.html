@@ -173,7 +173,7 @@
           </div>
         </div>
         <div style="display:flex;justify-content:flex-end;gap:10px;">
-          <button class="btn-outline" onclick="showToast('Changes discarded','info')">Discard</button>
+          <button class="btn-outline" onclick="resetCompany()">Discard</button>
           <button class="btn-primary" onclick="saveSection('company')">Save Changes</button>
         </div>
       </div>
@@ -258,6 +258,14 @@
     document.getElementById('p-first').value = 'Alex';
     document.getElementById('p-last').value = 'Wilson';
     document.getElementById('p-email').value = 'alex@scaleflow.io';
+    showToast('Changes discarded', 'info');
+  }
+
+  function resetCompany() {
+    document.getElementById('c-name').value = 'ScaleFlow Inc.';
+    document.getElementById('c-website').value = 'https://scaleflow.io';
+    document.getElementById('c-industry').value = 'Operations / Consulting';
+    document.getElementById('c-size').value = '6–20 people';
     showToast('Changes discarded', 'info');
   }
 

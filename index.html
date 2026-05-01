@@ -254,8 +254,9 @@
           id="hero-query-input"
           class="hero-input"
           autocomplete="off"
+          onkeydown="if(event.key==='Enter'){event.preventDefault();document.querySelector('#cta').scrollIntoView({behavior:'smooth'});}"
         />
-        <button class="hero-input-btn" aria-label="Search">
+        <button class="hero-input-btn" aria-label="Search" onclick="document.querySelector('#cta').scrollIntoView({behavior:'smooth'})">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"/>
             <polyline points="12 5 19 12 12 19"/>
@@ -1131,7 +1132,7 @@
           Think Smarter<br><span class="gradient-text">About Your Team.</span>
         </h2>
       </div>
-      <a data-animate data-delay="200" href="#" class="btn-outline flex-shrink-0">
+      <a data-animate data-delay="200" href="#insights" class="btn-outline flex-shrink-0">
         View All Articles
         <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
@@ -1155,7 +1156,7 @@
                 <div style="font-size:0.7rem;color:var(--fg-muted);">Mar 28, 2026</div>
               </div>
             </div>
-            <a href="#" class="read-more-link">Read →</a>
+            <a href="#insights" class="read-more-link">Read →</a>
           </div>
         </div>
       </div>
@@ -1176,7 +1177,7 @@
                 <div style="font-size:0.7rem;color:var(--fg-muted);">Apr 2, 2026</div>
               </div>
             </div>
-            <a href="#" class="read-more-link">Read →</a>
+            <a href="#insights" class="read-more-link">Read →</a>
           </div>
         </div>
       </div>
@@ -1197,7 +1198,7 @@
                 <div style="font-size:0.7rem;color:var(--fg-muted);">Apr 5, 2026</div>
               </div>
             </div>
-            <a href="#" class="read-more-link">Read →</a>
+            <a href="#insights" class="read-more-link">Read →</a>
           </div>
         </div>
       </div>
@@ -1433,7 +1434,7 @@
         <div data-animate data-delay="400" class="glass-card p-5 rounded-2xl">
           <div style="font-size:0.875rem;font-weight:700;color:var(--fg-primary);margin-bottom:4px;">Are you a Virtual Assistant?</div>
           <p style="font-size:0.8125rem;color:var(--fg-muted);margin-bottom:0.75rem;">Join our exclusive talent pool. Free to apply. We'll match you with quality long-term clients.</p>
-          <a href="#" class="read-more-link" style="font-size:0.875rem;">Apply as a VA — it's free →</a>
+          <a href="#cta" class="read-more-link" style="font-size:0.875rem;">Apply as a VA — it's free →</a>
         </div>
       </div>
 
@@ -1530,10 +1531,10 @@
           The elite AI-powered Virtual Assistant recruiting agency. We match ambitious businesses with exceptional virtual professionals.
         </p>
         <div class="flex gap-3">
-          <a href="#" class="w-10 h-10 rounded-xl flex items-center justify-center hover:-translate-y-1 transition-all text-white/70 hover:text-white border border-white/10 hover:border-emerald-500" style="background:rgba(255,255,255,0.05);" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/company/virtualpersonal-ai" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl flex items-center justify-center hover:-translate-y-1 transition-all text-white/70 hover:text-white border border-white/10 hover:border-emerald-500" style="background:rgba(255,255,255,0.05);" aria-label="LinkedIn">
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
-          <a href="#" class="w-10 h-10 rounded-xl flex items-center justify-center hover:-translate-y-1 transition-all text-white/70 hover:text-white border border-white/10 hover:border-emerald-500" style="background:rgba(255,255,255,0.05);" aria-label="Twitter / X">
+          <a href="https://twitter.com/virtualpersonalai" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl flex items-center justify-center hover:-translate-y-1 transition-all text-white/70 hover:text-white border border-white/10 hover:border-emerald-500" style="background:rgba(255,255,255,0.05);" aria-label="Twitter / X">
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
         </div>
@@ -1558,7 +1559,7 @@
           <div class="flex flex-col gap-3.5">
             <a href="#cta" class="text-[0.9375rem] text-white/50 hover:text-white hover:translate-x-1 transition-all ease-in-out">Apply as a VA</a>
             <a href="#insights" class="text-[0.9375rem] text-white/50 hover:text-white hover:translate-x-1 transition-all ease-in-out">Insights Blog</a>
-            <a href="#hero" class="text-[0.9375rem] text-white/50 hover:text-white hover:translate-x-1 transition-all ease-in-out">Resources</a>
+            <a href="#insights" class="text-[0.9375rem] text-white/50 hover:text-white hover:translate-x-1 transition-all ease-in-out">Resources</a>
           </div>
         </div>
 
@@ -1567,9 +1568,9 @@
           <div style="font-weight:700;font-size:0.8125rem;color:white;margin-bottom:1.25rem;letter-spacing:0.08em;text-transform:uppercase;">Company</div>
           <div class="flex flex-col gap-3.5">
             <a href="#cta" class="text-[0.9375rem] text-white/50 hover:text-white hover:translate-x-1 transition-all ease-in-out">Contact Us</a>
-            <a href="#hero" class="text-[0.9375rem] text-white/50 hover:text-white hover:translate-x-1 transition-all ease-in-out">About Us</a>
-            <a href="#hero" class="text-[0.9375rem] text-white/50 hover:text-white hover:translate-x-1 transition-all ease-in-out">Privacy Policy</a>
-            <a href="#hero" class="text-[0.9375rem] text-white/50 hover:text-white hover:translate-x-1 transition-all ease-in-out">Terms of Service</a>
+            <a href="#testimonials" class="text-[0.9375rem] text-white/50 hover:text-white hover:translate-x-1 transition-all ease-in-out">About Us</a>
+            <a href="privacy.html" class="text-[0.9375rem] text-white/50 hover:text-white hover:translate-x-1 transition-all ease-in-out">Privacy Policy</a>
+            <a href="terms.html" class="text-[0.9375rem] text-white/50 hover:text-white hover:translate-x-1 transition-all ease-in-out">Terms of Service</a>
           </div>
         </div>
       </div>
