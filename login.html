@@ -305,7 +305,7 @@
         <div style="margin-bottom:0.375rem;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:7px;">
             <label style="font-size:0.875rem; font-weight:500; color:var(--fg-primary);">Password</label>
-            <a href="#" style="font-size:0.8125rem; color:var(--emerald); text-decoration:none; font-weight:500;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Forgot password?</a>
+            <a href="#" style="font-size:0.8125rem; color:var(--emerald); text-decoration:none; font-weight:500;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'" onclick="event.preventDefault();showForgotMsg()">Forgot password?</a>
           </div>
           <div class="input-wrap">
             <input type="password" id="login-password" class="auth-input" placeholder="••••••••" autocomplete="current-password" style="padding-right: 46px;" />
@@ -314,6 +314,9 @@
             </button>
           </div>
           <div class="field-error" id="password-error">Password is required.</div>
+          <div id="forgot-msg" style="display:none;margin-top:8px;padding:10px 14px;background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.25);border-radius:8px;font-size:0.8125rem;color:var(--emerald);font-weight:500;">
+            ✓ Check your inbox — we've sent a reset link to your email address.
+          </div>
         </div>
 
         <!-- Remember me -->
@@ -345,7 +348,15 @@
     </div>
   </div>
 
+<script src="auth.js"></script>
 <script>
+  function showForgotMsg() {
+    const el = document.getElementById('forgot-msg');
+    if (!el) return;
+    el.style.display = 'block';
+    setTimeout(() => { el.style.display = 'none'; }, 6000);
+  }
+
   function togglePw(inputId, btn) {
     const input = document.getElementById(inputId);
     const isText = input.type === 'text';
@@ -390,11 +401,17 @@
     const btn = document.getElementById('login-submit');
     btn.disabled = true;
     btn.textContent = 'Signing in…';
-    setTimeout(() => {
-      btn.textContent = '✓ Signed in! Redirecting…';
-      btn.style.background = 'linear-gradient(135deg,#059669,#0d9488)';
-      setTimeout(() => { window.location.href = 'dashboard.html'; }, 700);
-    }, 1400);
+
+    const result = vpSignIn(email.value, password.value);
+    if (!result.ok) {
+      passErr.textContent = result.error;
+      password.classList.add('error'); passErr.classList.add('show');
+      btn.disabled = false; btn.textContent = 'Sign In';
+      return;
+    }
+    btn.textContent = '✓ Signed in! Redirecting…';
+    btn.style.background = 'linear-gradient(135deg,#059669,#0d9488)';
+    setTimeout(() => { window.location.href = 'dashboard.html'; }, 700);
   });
 
   // Clear error on input

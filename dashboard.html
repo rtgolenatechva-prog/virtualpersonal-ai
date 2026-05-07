@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="dashboard-shared.css" />
+  <script src="auth.js"></script>
+  <script>vpRequireAuth();</script>
 </head>
 <body>
 <div class="dash-layout">
@@ -54,12 +56,12 @@
     </a>
 
     <div class="sidebar-footer">
-      <div class="user-avatar">AW</div>
+      <div class="user-avatar" data-vp-initials>AW</div>
       <div style="flex:1;overflow:hidden;">
-        <div style="font-size:0.8125rem;font-weight:600;color:var(--fg-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Alex Wilson</div>
+        <div style="font-size:0.8125rem;font-weight:600;color:var(--fg-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" data-vp-name>Alex Wilson</div>
         <div style="font-size:0.75rem;color:var(--fg-muted);">Growth Plan</div>
       </div>
-      <a href="login.html" title="Sign out" style="color:var(--fg-hint);transition:color 0.2s;" onmouseover="this.style.color='var(--error)'" onmouseout="this.style.color='var(--fg-hint)'">
+      <a href="#" onclick="vpSignOut()" title="Sign out" style="color:var(--fg-hint);transition:color 0.2s;" onmouseover="this.style.color='var(--error)'" onmouseout="this.style.color='var(--fg-hint)'">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
       </a>
     </div>
@@ -123,7 +125,7 @@
               Settings
             </a>
             <div class="dropdown-divider"></div>
-            <a href="login.html" class="dropdown-item danger">
+            <a href="#" onclick="vpSignOut()" class="dropdown-item danger">
               <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
               Sign Out
             </a>
@@ -573,6 +575,8 @@
   window.addEventListener('resize', () => {
     document.getElementById('mob-menu-btn').style.display = window.innerWidth < 1024 ? 'flex' : 'none';
   });
+
+  vpFillProfile();
 </script>
 </body>
 </html>
